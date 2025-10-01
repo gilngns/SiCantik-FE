@@ -1,0 +1,16 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": { "id": "K1", "name": "Kecamatan A", "luas": 6120, "target": 30, "produksi": 30 },
+        "geometry": { "type": "Polygon", "coordinates": [[[107.5,-7.05],[107.7,-7.05],[107.7,-6.95],[107.5,-6.95],[107.5,-7.05]]] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "id": "K2", "name": "Kecamatan B", "luas": 4800, "target": 25, "produksi": 16 },
+        "geometry": { "type": "Polygon", "coordinates": [[[107.6,-7.12],[107.8,-7.12],[107.8,-7.02],[107.6,-7.02],[107.6,-7.12]]] }
+      }
+    ]
+  }
+  
