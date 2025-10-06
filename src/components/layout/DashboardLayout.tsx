@@ -1,6 +1,6 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "../layout/Sidebar";
 import UserMenu from "../common/UserMenu";
-import Notification from "../common/NotificationBell"; 
+import Notification from "../common/NotificationBell";
 
 interface DashboardLayoutProps {
   title: string;
@@ -19,13 +19,14 @@ export default function DashboardLayout({ title, children }: DashboardLayoutProp
           <h1 className="text-2xl font-bold text-gray-800">{title}</h1>
 
           <div className="flex items-center gap-4">
-            {/* 🔔 Notification */}
+            {/* Notification */}
             <Notification />
 
-            {/* 👤 User Menu */}
+            {/* User Menu */}
             <UserMenu name="Muhammad Ardi" />
           </div>
         </div>
+
         {children}
       </main>
     </div>

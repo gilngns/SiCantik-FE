@@ -16,18 +16,15 @@ export default function Sidebar() {
       <nav className="flex flex-col gap-5 px-2">
         <SidebarItem icon={Plus} label="Import" to="/import" />
 
-        <SidebarItem
-          icon={LayoutGrid}
-          label="Dashboard"
-          children={[
-            { label: "Hasil Produksi", to: "/dashboard/hasil-produksi" },
-            { label: "Harga Produksi", to: "/dashboard/harga-produksi" },
-          ]}
-        />
+        <SidebarItem icon={LayoutGrid} label="Dashboard" to="/dashboard" />
 
         <SidebarItem icon={Sprout} label="Produksi" to="/produksi" />
 
-        <SidebarItem icon={CircleAlert} label="Early Warning System" to="/early-warning" />
+        <SidebarItem
+          icon={CircleAlert}
+          label="Early Warning System"
+          to="/early-warning"
+        />
 
         <SidebarItem
           icon={Users}
