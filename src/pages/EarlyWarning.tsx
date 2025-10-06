@@ -43,11 +43,11 @@ export default function EarlyWarning() {
               </div>
               <div className="mt-4 flex items-center justify-center gap-6 text-sm">
                 <div className="flex items-center gap-2">
-                  <span className="inline-block h-3 w-6 rounded bg-slate-400" />
+                  <span className="inline-block h-3 w-10 bg-slate-400" />
                   <span className="text-slate-600">Mencapai Target</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="inline-block h-3 w-6 rounded bg-red-500" />
+                  <span className="inline-block h-3 w-10 bg-red-500" />
                   <span className="text-slate-600">Belum Mencapai Target</span>
                 </div>
               </div>
