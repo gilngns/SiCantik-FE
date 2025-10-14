@@ -1,11 +1,43 @@
 import DashboardLayout from "../components/layout/DashboardLayout";
 // import ProductionMap from "../components/charts/ProductionMap";
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const [wilayah, setWilayah] = useState("");
   const [tahun, setTahun] = useState("");
+
+  // 🔔 State & handler untuk notifikasi
+  const [open, setOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  const handleBellClick = () => {
+    const isMobile = window.innerWidth < 1024; // breakpoint lg
+    if (isMobile) {
+      navigate("/notifications"); // redirect ke halaman notif di mobile
+    } else {
+      setOpen(!open); // buka modal notif di desktop
+    }
+  };
+
+  // ✅ Tutup modal kalau klik di luar
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (panelRef.current && !panelRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
 
   return (
     <DashboardLayout title="Dashboard">
@@ -20,16 +52,35 @@ export default function Dashboard() {
           }}
         >
           {/* Greeting */}
-          <div className="flex justify-between items-start">
+          <div className="flex justify-between items-start" ref={panelRef}>
             <div>
               <p className="text-xl font-bold mb-1">Halo, Selamat Datang</p>
               <p className="text-xs text-gray-200">Rabu 24, Mei 2023</p>
             </div>
 
             {/* Ikon Notifikasi */}
-            <button className="bg-white/10 backdrop-blur-sm rounded-lg p-2">
+            <button
+              onClick={handleBellClick}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-2 relative"
+            >
               <Icon icon="mdi:bell-outline" className="w-6 h-6 text-white" />
             </button>
+
+            {/* Modal Notifikasi → hanya muncul di desktop */}
+            <div
+              className={`absolute right-0 top-12 w-80 bg-white rounded-2xl shadow-xl transition-all duration-300 ${
+                open ? "scale-100 opacity-100" : "scale-95 opacity-0 pointer-events-none"
+              }`}
+            >
+              <div className="px-5 py-3 border-b flex justify-between items-center">
+                <h3 className="font-semibold text-gray-800">Notification</h3>
+                <button onClick={() => setOpen(false)}>✕</button>
+              </div>
+              <div className="p-5 text-sm text-gray-600">
+                <p>Contoh notifikasi: 2 transaksi kerja sama masuk</p>
+                <p className="mt-2 text-xs text-gray-400">29 Sep 2025, 10:45</p>
+              </div>
+            </div>
           </div>
 
           {/* Card Wilayah */}

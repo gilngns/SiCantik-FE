@@ -33,7 +33,7 @@ export default function BottomNav() {
 
         {/* Harga */}
         <NavLink
-          to="/harga"
+          to="/price"
           className={({ isActive }) =>
             `flex flex-col items-center ${
               isActive ? "text-emerald-700 font-semibold" : "text-gray-400"

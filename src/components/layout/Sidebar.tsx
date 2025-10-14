@@ -1,7 +1,7 @@
 import InfoCard from "../ui/InfoCard";
 import SidebarItem from "../ui/SidebarItem";
 import infocardIcon from "../../assets/infocard.png";
-import { LayoutGrid, Sprout, Users, Settings, Plus, CircleAlert } from "lucide-react";
+import { LayoutGrid, Sprout, Users, Plus, CircleAlert } from "lucide-react";
 
 export default function Sidebar() {
   return (
@@ -34,8 +34,6 @@ export default function Sidebar() {
             { label: "Distribusi", to: "/kerja-sama/distribusi" },
           ]}
         />
-
-        <SidebarItem icon={Settings} label="Pengaturan" to="/pengaturan" />
       </nav>
 
       {/* InfoCard */}
